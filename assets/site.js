@@ -14,6 +14,44 @@
   tickClock();
   setInterval(tickClock, 30000);
 
+
+  // ---- Hero callback form (posts to the form's action via FormSubmit's AJAX endpoint) -----
+  var form = document.querySelector('form.leadform');
+  if (form) {
+    var status = form.parentNode.querySelector('[data-form-status]');
+    var done = form.parentNode.querySelector('[data-form-done]');
+    var btn = form.querySelector('.lf-submit');
+    var setErr = function (el, msg) {
+      el.setAttribute('aria-invalid', 'true'); status.textContent = msg; el.focus();
+    };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.textContent = '';
+      form.querySelectorAll('[aria-invalid]').forEach(function (n) { n.removeAttribute('aria-invalid'); });
+      var name = form.elements['Name'], phone = form.elements['Phone'], svc = form.elements['Service'];
+      if (!name.value.trim()) return setErr(name, 'Please tell us your name.');
+      var digits = phone.value.replace(/\D/g, '');
+      if (digits.length < 10 || digits.length > 11) return setErr(phone, 'Please enter a valid phone number so we can call you.');
+      if (!svc.value) return setErr(svc, 'Please choose a service.');
+      var hp = form.elements['_honey'];
+      if (hp && hp.value) { form.hidden = true; done.hidden = false; return; }   // bot: pretend success
+      btn.disabled = true; var label = btn.textContent; btn.textContent = 'Sending…';
+      fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
+      }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (res.ok && String(res.j.success) !== 'false') {
+            form.hidden = true; done.hidden = false;
+            var h = done.querySelector('h3'); if (h) { h.setAttribute('tabindex', '-1'); h.focus(); }
+          } else { throw new Error('bad'); }
+        })
+        .catch(function () {
+          btn.disabled = false; btn.textContent = label;
+          status.textContent = "Sorry, that didn't send. Please call (646) 692-0033 and we'll help right away.";
+        });
+    });
+  }
+
   // ---- Exit-intent discount offer --------------------------------------------------------
   var offer = document.getElementById('offer');
   if (!offer) return;

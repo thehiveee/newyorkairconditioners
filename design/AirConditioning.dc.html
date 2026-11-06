@@ -70,6 +70,22 @@ a{color:#14164A}a:hover{color:#C2410C}
 }
 @supports (animation-timeline: view()){.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.heroside{position:relative}
+.herofx{position:absolute;left:-22%;top:-12%;width:144%;height:auto;opacity:.3;z-index:0;pointer-events:none}
+.hbadge{display:none!important}
+.lf-card{position:relative;z-index:1}
+.lf-label{display:block;font-size:14px;font-weight:700;color:#262A66;margin:0 0 6px}
+.lf-input{width:100%;box-sizing:border-box;min-height:50px;padding:12px 14px;font:inherit;font-size:16px;color:#14164A;background:#FFFFFF;border:1.5px solid #A9ACD6;border-radius:14px;transition:border-color .2s,box-shadow .2s}
+.lf-input:focus{outline:none;border-color:#3539B5;box-shadow:0 0 0 4px rgba(53,57,181,.22)}
+.lf-input[aria-invalid="true"]{border-color:#B42318}
+textarea.lf-input{min-height:60px;resize:vertical}
+.lf-submit{width:100%;min-height:56px;border:0;border-radius:999px;background:#14164A;color:#FFFFFF;font:inherit;font-size:17px;font-weight:800;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.lf-submit:hover{background:#3539B5;transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(20,22,74,.8)}
+.lf-submit:disabled{opacity:.7;cursor:progress;transform:none}
+.lf-submit:focus-visible{outline:3px solid #9FD4F5;outline-offset:3px}
+.lf-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+@keyframes lfin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.lf-done{animation:lfin .5s both}
 </style>
 </helmet>
 <div onMouseLeave="{{onLeave}}" style="min-height: 100vh; padding-bottom: 104px; overflow-x: hidden">
@@ -118,8 +134,31 @@ a{color:#14164A}a:hover{color:#C2410C}
 <a class="lnk" href="mailto:contact@nyc-airconditioner.com?subject=AC%20quote%20request" style="display: inline-flex; align-items: center; gap: 8px; color: #E1E3F8; font-weight: 600; font-size: 15px">Prefer email? Request a quote <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </div>
 </div>
-<div class="rise d3" style="position: relative; justify-self: center; width: 100%; max-width: 480px">
-<svg viewBox="0 0 520 520" width="100%" role="img" aria-label="Animated snowflake with falling frost">
+<div class="rise d3 heroside" style="position: relative; justify-self: center; width: 100%; max-width: 520px">
+<div class="lf-card" style="background: #FFFFFF; color: #14164A; border-radius: 24px; padding: 24px; box-shadow: 0 40px 80px -30px rgba(0,0,0,0.55); display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 class="h" style="margin: 0; font-size: 28px; font-weight: 900; line-height: 1.05">Request a call back</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3D4170">Fastest is to call <a href="tel:+16466920033" style="color: #C2410C; font-weight: 800; white-space: nowrap">(646) 692-0033</a>. Or leave your number and we'll ring you.</p>
+</div>
+<form class="leadform" id="quote" style="display: flex; flex-direction: column; gap: 12px" novalidate>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px">
+<div><label class="lf-label" for="lf-name">Your name</label><input class="lf-input" id="lf-name" name="Name" type="text" autocomplete="name" required></div>
+<div><label class="lf-label" for="lf-phone">Phone number</label><input class="lf-input" id="lf-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
+</div>
+<div><label class="lf-label" for="lf-service">What do you need?</label><select class="lf-input" id="lf-service" name="Service" required><option value="" disabled>Choose a service</option><option value="Air conditioning" selected>Air conditioning</option><option value="Heating / boiler">Heating / boiler</option><option value="Commercial refrigeration">Commercial refrigeration</option><option value="Ventilation / air quality">Ventilation / air quality</option><option value="Something else">Something else</option></select></div>
+<div><label class="lf-label" for="lf-msg">What's happening? <span style="font-weight: 500; color: #5E6290">(optional)</span></label><textarea class="lf-input" id="lf-msg" name="Message" rows="2"></textarea></div>
+<button class="lf-submit" type="button">Call me back</button>
+<p data-form-status role="status" aria-live="polite" style="margin: 0; min-height: 0; font-size: 14px; font-weight: 600; color: #B42318"></p>
+<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #4A4E80">By sending this you agree we may contact you about your request. We never share your details.</p>
+</form>
+<div data-form-done hidden><div class="lf-done" style="display: flex; flex-direction: column; gap: 10px; padding: 12px 0">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l3 3 5-6"/></svg>
+<h3 class="h" style="margin: 0; font-size: 26px; font-weight: 900; line-height: 1.1">Thanks — we've got it.</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3D4170">A technician will call you back shortly. If it can't wait, call <a href="tel:+16466920033" style="color: #C2410C; font-weight: 800; white-space: nowrap">(646) 692-0033</a> now.</p>
+</div></div>
+</div>
+
+<svg class="herofx" viewBox="0 0 520 520" width="100%" role="img" aria-label="Animated snowflake with falling frost">
 <defs><clipPath id="acclip"><circle cx="260" cy="260" r="240"/></clipPath></defs>
 <circle cx="260" cy="260" r="240" fill="#2A2D9C" stroke="rgba(159,212,245,0.3)"/>
 <g clip-path="url(#acclip)">
@@ -135,7 +174,7 @@ a{color:#14164A}a:hover{color:#C2410C}
 </g>
 <circle cx="260" cy="260" r="16" fill="#14164A" stroke="#F4F5FB" stroke-width="3"/>
 </svg>
-<div class="float" style="position: absolute; bottom: 8%; left: -4%; background: #F4F5FB; color: #14164A; border-radius: 16px; padding: 14px 18px; box-shadow: 0 24px 50px -20px rgba(0,0,0,0.6)"><div class="h" style="font-weight: 900; font-size: 22px; line-height: 1">10 system types</div><div style="font-size: 12px; font-weight: 600; color: #3D4170">PTAC to VRF — one crew</div></div>
+<div class="hbadge float" style="position: absolute; bottom: 8%; left: -4%; background: #F4F5FB; color: #14164A; border-radius: 16px; padding: 14px 18px; box-shadow: 0 24px 50px -20px rgba(0,0,0,0.6)"><div class="h" style="font-weight: 900; font-size: 22px; line-height: 1">10 system types</div><div style="font-size: 12px; font-weight: 600; color: #3D4170">PTAC to VRF — one crew</div></div>
 </div>
 </div>
 </section>
