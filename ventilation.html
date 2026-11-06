@@ -9,12 +9,25 @@
 <meta name="theme-color" content="#3539B5">
 <link rel="canonical" href="https://nyc-airconditioner.com/ventilation">
 <link rel="icon" href="/assets/logo/nyac-logo-mark.svg" type="image/svg+xml">
+<meta property="og:site_name" content="New York Air Conditioners">
+<meta property="og:url" content="https://nyc-airconditioner.com/ventilation">
+<meta property="og:image" content="https://nyc-airconditioner.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="New York Air Conditioners logo — 24-hour heating, cooling and refrigeration across NYC. Call (646) 692-0033.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nyc-airconditioner.com/assets/og-image.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="ga4-id" content=""><!-- optional: paste a Google Analytics 4 ID (G-XXXXXXX) to enable GA with a consent banner -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ventilation &amp; Air Quality NYC — New York Air Conditioners">
 <meta property="og:description" content="Air filtration, ductwork, humidification, humidity control and energy recovery ventilation for NYC homes and businesses. Call (646) 692-0033.">
-<meta property="og:image" content="/assets/logo/nyac-logo-blue-text.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Inter:wght@400..800&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#F4F5FB;color:#14164A;font-family:'Inter',system-ui,-apple-system,sans-serif}
 a{color:#14164A}a:hover{color:#C2410C}
@@ -91,9 +104,28 @@ textarea.lf-input{min-height:60px;resize:vertical}
 .lf-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 @keyframes lfin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .lf-done{animation:lfin .5s both}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:#14164A;color:#FFFFFF;padding:12px 18px;border-radius:10px;font-weight:700;text-decoration:none}
+.skip:focus{top:12px;color:#FFFFFF}
+.legal h2{font-family:'Archivo','Arial Narrow',system-ui,sans-serif;font-stretch:112%;font-size:26px;font-weight:800;margin:40px 0 12px;letter-spacing:-0.02em}
+.legal p,.legal li{font-size:17px;line-height:1.7;color:#262A66}
+.legal ul{padding-left:22px;margin:0 0 12px}
+.legal a{color:#C2410C}
+.consent{position:fixed;left:16px;bottom:96px;z-index:70;max-width:420px;background:#FFFFFF;color:#14164A;border-radius:18px;padding:18px 20px;box-shadow:0 24px 60px -20px rgba(20,22,74,.55);display:flex;flex-direction:column;gap:12px;font-size:14px;line-height:1.5}
+.consent p{margin:0}.consent a{color:#C2410C}
+.consent div{display:flex;gap:10px;flex-wrap:wrap}
+.consent button{min-height:44px;padding:0 18px;border-radius:999px;font:inherit;font-weight:800;cursor:pointer;border:1.5px solid #14164A}
+.consent .ok{background:#14164A;color:#FFFFFF}.consent .no{background:#FFFFFF;color:#14164A}
+@media (max-width: 760px){.consent{left:12px;right:12px;bottom:84px;max-width:none}}
+.nl{display:inline-block;padding-top:8px;padding-bottom:8px!important;background-position:0 calc(100% - 3px)!important}
+footer a{display:inline-block;padding:4px 0}
+nav[aria-label="Breadcrumb"] a{display:inline-block;padding:4px 0}
+.quote{display:inline-block;padding:10px 0}
+.lnk{padding:4px 0}
+.legal a{display:inline-block;padding:2px 0}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div style="min-height: 100vh; padding-bottom: 104px; overflow-x: hidden">
 
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(53,57,181,0.95); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.12)">
@@ -109,7 +141,7 @@ textarea.lf-input{min-height:60px;resize:vertical}
 <a class="nl" href="/#areas">Areas</a>
 </nav>
 <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
-<a href="mailto:contact@nyc-airconditioner.com?subject=Ventilation%20quote%20request" class="quote" style="font-size: 14px; font-weight: 600; color: #E4E6FA">Get a quote</a>
+<a href="#quote" class="quote" style="font-size: 14px; font-weight: 600; color: #E4E6FA">Request a call back</a>
 <a class="call" href="tel:+16466920033" style="display: inline-flex; align-items: center; gap: 10px; background: #F44817; color: #14164A; padding: 12px 20px; border-radius: 999px; font-weight: 800; text-decoration: none; min-height: 48px; box-sizing: border-box; font-size: 16px">
 <span class="shine"></span>
 <svg class="ph" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -118,6 +150,7 @@ textarea.lf-input{min-height:60px;resize:vertical}
 </div>
 </div>
 </header>
+<main id="main">
 
 <section style="position: relative; background: #3539B5; color: #FFFFFF; overflow: hidden">
 <svg width="100%" height="100%" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position: absolute; inset: 0; opacity: 0.5">
@@ -137,7 +170,6 @@ textarea.lf-input{min-height:60px;resize:vertical}
 <svg class="ph" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
 <span>Call an air quality tech</span>
 </a>
-<a class="lnk" href="mailto:contact@nyc-airconditioner.com?subject=Ventilation%20quote%20request" style="display: inline-flex; align-items: center; gap: 8px; color: #E1E3F8; font-weight: 600; font-size: 15px">Prefer email? Request a quote <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </div>
 </div>
 <div class="rise d3 heroside" style="position: relative; justify-self: center; width: 100%; max-width: 520px">
@@ -148,14 +180,14 @@ textarea.lf-input{min-height:60px;resize:vertical}
 </div>
 <form class="leadform" id="quote" action="https://formsubmit.co/contact@nyc-airconditioner.com" method="POST" style="display: flex; flex-direction: column; gap: 12px" novalidate>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px">
-<div><label class="lf-label" for="lf-name">Your name</label><input class="lf-input" id="lf-name" name="Name" type="text" autocomplete="name" required></div>
-<div><label class="lf-label" for="lf-phone">Phone number</label><input class="lf-input" id="lf-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
+<div><label class="lf-label" for="lf-name">Your name</label><input class="lf-input" id="lf-name" name="Name" type="text" autocomplete="name" maxlength="80" required></div>
+<div><label class="lf-label" for="lf-phone">Phone number</label><input class="lf-input" id="lf-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required></div>
 </div>
 <div><label class="lf-label" for="lf-service">What do you need?</label><select class="lf-input" id="lf-service" name="Service" required><option value="" disabled>Choose a service</option><option value="Air conditioning">Air conditioning</option><option value="Heating / boiler">Heating / boiler</option><option value="Commercial refrigeration">Commercial refrigeration</option><option value="Ventilation / air quality" selected>Ventilation / air quality</option><option value="Something else">Something else</option></select></div>
-<div><label class="lf-label" for="lf-msg">What's happening? <span style="font-weight: 500; color: #5E6290">(optional)</span></label><textarea class="lf-input" id="lf-msg" name="Message" rows="2"></textarea></div>
+<div><label class="lf-label" for="lf-msg">What's happening? <span style="font-weight: 500; color: #5E6290">(optional)</span></label><textarea class="lf-input" id="lf-msg" name="Message" rows="2" maxlength="1000"></textarea></div>
 <input type="hidden" name="_subject" value="New callback request — NYC Air Conditioners website"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><div class="lf-hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div><button class="lf-submit" type="submit">Call me back</button>
 <p data-form-status role="status" aria-live="polite" style="margin: 0; min-height: 0; font-size: 14px; font-weight: 600; color: #B42318"></p>
-<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #4A4E80">By sending this you agree we may contact you about your request. We never share your details.</p>
+<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #4A4E80">By sending this you agree we may contact you about your request. See our <a href="/privacy" style="color: #3539B5">Privacy Policy</a>.</p>
 </form>
 <div data-form-done hidden><div class="lf-done" style="display: flex; flex-direction: column; gap: 10px; padding: 12px 0">
 <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l3 3 5-6"/></svg>
@@ -273,15 +305,16 @@ textarea.lf-input{min-height:60px;resize:vertical}
 </div>
 </section>
 
+</main>
 <footer style="background: #14164A; color: #D9DCF5">
 <div style="max-width: 1280px; margin: 0 auto; padding: 56px 24px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; font-size: 14px">
 <div style="display: flex; flex-direction: column; gap: 10px"><img src="/assets/logo/nyac-logo-white-text.svg" alt="New York Air Conditioners" style="height: 84px; width: auto; display: block; align-self: flex-start"><span style="line-height: 1.6">141 W 28th St #8400, New York, NY 10001</span></div>
 <div style="display: flex; flex-direction: column; gap: 10px"><a href="tel:+16466920033" style="color: #F4F5FB; font-weight: 700">(646) 692-0033</a><a href="mailto:contact@nyc-airconditioner.com" style="color: #D9DCF5">contact@nyc-airconditioner.com</a></div>
-<span style="align-self: flex-end">© 2026 New York Air Conditioners · <a href="#" style="color: #D9DCF5">Terms</a> · <a href="#" style="color: #D9DCF5">Privacy</a></span>
+<span style="align-self: flex-end">© 2026 New York Air Conditioners · <a href="/terms" style="color: #D9DCF5">Terms</a> · <a href="/privacy" style="color: #D9DCF5">Privacy</a></span>
 </div>
 </footer>
 
-<div class="banner" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: #14164A; color: #F4F5FB; border-top: 2px solid #F44817; box-shadow: 0 -20px 40px -20px rgba(0,0,0,0.5)">
+<div class="banner" role="region" aria-label="Call us 24 hours" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: #14164A; color: #F4F5FB; border-top: 2px solid #F44817; box-shadow: 0 -20px 40px -20px rgba(0,0,0,0.5)">
 <div class="banrow" style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
 <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
 <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(59,224,138,0.14); color: #7BF0B4; padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.08em"><span class="live" style="width: 8px; height: 8px; border-radius: 50%; background: #3BE08A; display: block"></span>LINE OPEN</span>
@@ -321,6 +354,8 @@ textarea.lf-input{min-height:60px;resize:vertical}
 </div>
 
 </div>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>

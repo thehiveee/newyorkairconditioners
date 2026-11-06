@@ -15,6 +15,49 @@
   setInterval(tickClock, 30000);
 
 
+  var loadedAt = Date.now();
+
+  // ---- Conversion tracking (Vercel Web Analytics; GA4 too if consented) -------------------
+  function track(name, data) {
+    try { if (window.va) window.va('event', { name: name, data: data || {} }); } catch (e) {}
+    try { if (window.gtag) window.gtag('event', name.toLowerCase().replace(/\s+/g, '_'), data || {}); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (a) track('Call click', { page: location.pathname });
+  });
+
+  // ---- Optional Google Analytics 4 behind a cookie consent banner -------------------------
+  // Only active when <meta name="ga4-id" content="G-XXXXXXX"> is filled in. Vercel Web Analytics
+  // is cookieless and runs without consent.
+  (function () {
+    var meta = document.querySelector('meta[name="ga4-id"]');
+    var id = meta && meta.content.trim();
+    if (!id || !/^G-[A-Z0-9]+$/.test(id)) return;
+    var KEY = 'nyac-consent';
+    var choice = null;
+    try { choice = localStorage.getItem(KEY); } catch (e) {}
+    function loadGA() {
+      var s = document.createElement('script');
+      s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date()); window.gtag('config', id, { anonymize_ip: true });
+    }
+    if (choice === 'granted') { loadGA(); return; }
+    if (choice === 'denied') return;
+    var box = document.createElement('div');
+    box.className = 'consent'; box.setAttribute('role', 'region'); box.setAttribute('aria-label', 'Cookie choice');
+    box.innerHTML = '<p>We’d like to use analytics cookies to see how visitors use this site. ' +
+      'You can say no and everything still works. <a href="/privacy">Privacy Policy</a></p>' +
+      '<div><button type="button" class="ok">Accept</button><button type="button" class="no">Decline</button></div>';
+    document.body.appendChild(box);
+    function decide(v) { try { localStorage.setItem(KEY, v); } catch (e) {} box.remove(); if (v === 'granted') loadGA(); }
+    box.querySelector('.ok').addEventListener('click', function () { decide('granted'); });
+    box.querySelector('.no').addEventListener('click', function () { decide('denied'); });
+  })();
+
   // ---- Hero callback form (posts to the form's action via FormSubmit's AJAX endpoint) -----
   var form = document.querySelector('form.leadform');
   if (form) {
@@ -34,7 +77,8 @@
       if (digits.length < 10 || digits.length > 11) return setErr(phone, 'Please enter a valid phone number so we can call you.');
       if (!svc.value) return setErr(svc, 'Please choose a service.');
       var hp = form.elements['_honey'];
-      if (hp && hp.value) { form.hidden = true; done.hidden = false; return; }   // bot: pretend success
+      var tooFast = (Date.now() - loadedAt) < 3000;          // humans take longer than 3 s to fill this in
+      if ((hp && hp.value) || tooFast) { form.hidden = true; done.hidden = false; return; }   // bot: pretend success
       btn.disabled = true; var label = btn.textContent; btn.textContent = 'Sending…';
       fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
         method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
@@ -42,6 +86,7 @@
         .then(function (res) {
           if (res.ok && String(res.j.success) !== 'false') {
             form.hidden = true; done.hidden = false;
+            track('Callback request', { service: svc.value });
             var h = done.querySelector('h3'); if (h) { h.setAttribute('tabindex', '-1'); h.focus(); }
           } else { throw new Error('bad'); }
         })
