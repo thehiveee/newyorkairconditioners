@@ -1,20 +1,24 @@
 # New York Air Conditioners — website redesign
 
-Multi-page redesign of nyc-airconditioner.com.
+Static multi-page site (plain HTML/CSS/JS — no build step).
 
-## Pages (`design/`)
-- `Main.dc.html` — Home
-- `AirConditioning.dc.html`, `Heating.dc.html`, `Refrigeration.dc.html`, `Ventilation.dc.html` — one page per service
-- `canvas.json` — artboard layout index
+| URL | File |
+|---|---|
+| `/` | `index.html` |
+| `/air-conditioning` | `air-conditioning.html` |
+| `/heating` | `heating.html` |
+| `/refrigeration` | `refrigeration.html` |
+| `/ventilation` | `ventilation.html` |
 
-These are Design-canvas artboards (`.dc.html`), authored in the Claude Design artifact. They reference the logo via an artifact-hosted `/_blob/…` URL; the same files are in `assets/logo/` (SVG + transparent PNG).
+- `assets/site.js` — live NYC time in the banner, exit-intent offer + countdown (touch devices: shows once after 30 s)
+- `assets/logo/` — transparent logo (SVG + PNG)
+- `vercel.json` — clean URLs + basic headers
+- `design/` — original Claude Design canvas artboards (reference only, not served)
 
-## Features
-- Call-first CTAs (pulsing call button; "Get a quote" demoted to a text link)
-- Sticky bottom banner with live NYC time, urgency copy and Call now button
-- Exit-intent 15% off pop-up (code `NYC15`); on touch devices it appears once after 30 s
-- Motion graphics and scroll/hover animations (respects `prefers-reduced-motion`)
-- Palette from the logo: blue `#3539B5`, orange `#F44817`, snow blue `#0F82C7`
+## Deploy (Vercel)
+Import this repo → Framework Preset **Other** → leave Build Command and Output Directory empty → Deploy.
 
-## To confirm with the client
-Guarantee placeholders (satisfaction guarantee, upfront pricing, [X]-year labor warranty), offer terms, real Google reviews, licence number.
+## Before launch
+- Remove `<meta name="robots" content="noindex, nofollow">` from the 5 pages (it keeps the preview out of Google).
+- Confirm the yellow **CLIENT TO CONFIRM** guarantee placeholders, offer terms for code `NYC15`, and replace the three `[Paste a real Google review]` cards.
+- Add the licence number if wanted; point the domain at Vercel.
